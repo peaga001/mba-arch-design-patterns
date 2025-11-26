@@ -1,10 +1,28 @@
 #!/bin/sh
 
+echo "🎨 Verificando arquivos alterados..."
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.php$' || true)
+
+if [ -z "$FILES" ]; then
+  echo "✅ Nenhum arquivo PHP alterado."
+  exit 0
+fi
+
+echo
+echo "📄 Arquivos alterados:"
+echo "$FILES"
+
+FILES_LIST=$(echo "$FILES" | tr '\n' ' ')
+
+if [ -z "$FILES_LIST" ]; then
+  echo "✅ Nenhum arquivo PHP encontrado nas alterações! Pulando pré-commit..."
+  exit 0
+fi
+
 CONTAINER_NAME="app"
 
 echo "🔍 Executando hooks de pre-commit..."
 
-# Verifica se o container está rodando
 if ! docker ps --format '{{.Names}}' | grep -qx "$CONTAINER_NAME"; then
   echo "❌ O container \"$CONTAINER_NAME\" não está em execução."
   echo "👉 Sobe o ambiente antes de commitar (ex: docker compose up -d)."

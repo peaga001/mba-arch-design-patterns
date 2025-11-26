@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "test": "phpunit tests",
-    "stan": "phpstan analyse src/ --level=10",
+    "stan": "phpstan analyse src/ --level=10 --error-format=table",
     "check-all": "phpstan analyse src/ --level=10 && phpunit tests",
     "coverage": "XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-html coverage"
   },
