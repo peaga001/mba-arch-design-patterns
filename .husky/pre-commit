@@ -1,0 +1,33 @@
+#!/bin/sh
+
+CONTAINER_NAME="app"
+
+echo "🔍 Executando hooks de pre-commit..."
+
+# Verifica se o container está rodando
+if ! docker ps --format '{{.Names}}' | grep -qx "$CONTAINER_NAME"; then
+  echo "❌ O container \"$CONTAINER_NAME\" não está em execução."
+  echo "👉 Sobe o ambiente antes de commitar (ex: docker compose up -d)."
+  exit 1
+fi
+
+run_in_container() {
+  docker exec "$CONTAINER_NAME" sh -lc "$1"
+}
+
+echo
+echo "🧪 Executando testes (composer test) em \"$CONTAINER_NAME\"..."
+if ! run_in_container "composer test"; then
+  echo "❌ 'composer test' falhou. Commit cancelado."
+  exit 1
+fi
+
+echo
+echo "🔍 Executando análise estática (composer stan) em \"$CONTAINER_NAME\"..."
+if ! run_in_container "composer stan"; then
+  echo "❌ 'composer stan' falhou. Commit cancelado."
+  exit 1
+fi
+
+echo
+echo "🚀 Tudo certo! Pre-commit finalizado com sucesso."

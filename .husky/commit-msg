@@ -1,0 +1,26 @@
+#!/bin/sh
+
+COMMIT_MSG_FILE="$1"
+COMMIT_MSG="$(head -n1 "$COMMIT_MSG_FILE")"
+
+echo "🔍 Validando mensagem de commit:"
+echo "    $COMMIT_MSG"
+
+# Padrão esperado:
+# tipo: mensagem
+# tipos suportados: feat | fix | chore | docs | refactor | style | test | build | ci | perf | revert
+COMMIT_REGEX='^(feat|fix|chore|docs|refactor|style|test|build|ci|perf|revert): .+'
+
+if ! echo "$COMMIT_MSG" | grep -Eq "$COMMIT_REGEX"; then
+  echo "❌ Mensagem de commit inválida!"
+  echo "➡️  Padrão esperado:"
+  echo "    tipo: descrição"
+  echo
+  echo "   Exemplos válidos:"
+  echo "    feat: cria estrutura base do projeto"
+  echo "    fix: ajusta docker-compose para subir corretamente"
+  echo "    chore: adiciona husky e configs padrão"
+  exit 1
+fi
+
+echo "✅ Mensagem de commit válida!"

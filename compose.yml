@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    container_name: app
+    volumes:
+      - ./:/app
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    ports:
+      - "8000:8000"
+    environment:
+      - XDEBUG_MODE=debug
+      - XDEBUG_SESSION=1
+      - COMPOSER_HOME=/composer
+    command: ["/bin/sh", "-c", "composer install --no-progress --no-interaction && php -S 0.0.0.0:8000 -t public"]
