@@ -9,6 +9,7 @@ RUN apk add --no-cache \
     linux-headers \
     nodejs \
     npm \
+    git \
     && pecl install xdebug \
     && docker-php-ext-enable opcache \
     && docker-php-ext-enable xdebug \
