@@ -53,6 +53,8 @@ O ambiente roda com:
     ├── docker/
     │   └── php/
     │       └── xdebug.ini
+    ├── .husky/
+    │   └── install-from-apt.sh
     └── composer.json
 
 ------------------------------------------------------------------------
@@ -85,6 +87,13 @@ docker exec app composer coverage
 
 A cobertura será gerada em `coverage/`.
 
+### Rodar Pré Commit Manualmente
+
+``` sh
+docker exec app composer pre-commit
+```
+CsFixer + PhpUnit + PhpStan 
+
 ------------------------------------------------------------------------
 
 ## 🐞 Debug com Xdebug
@@ -97,6 +106,35 @@ Variáveis já configuradas:
 Ajustes adicionais podem ser feitos em:
 
     docker/php/xdebug.ini
+
+------------------------------------------------------------------------
+
+## ⚙️ Instalação opcional do NVM (Debian/Ubuntu)
+
+O repositório inclui o script:
+
+    .husky/install-from-apt.sh
+
+Esse arquivo é útil quando o projeto precisa ser configurado em um
+ambiente **fora do Docker**, usando uma base **Debian/Ubuntu** (APT).
+
+O script faz:
+
+-   Instalação do `curl` (se necessário)
+-   Download do instalador oficial do NVM
+-   Carregamento automático do NVM no shell
+-   Possibilidade de instalar uma versão específica do Node.js
+
+Exemplo de uso:
+
+``` sh
+chmod +x .husky/install-from-apt.sh
+./.husky/install-from-apt.sh
+```
+
+Este script **não é executado automaticamente** dentro do container (que
+já usa Alpine e já possui Node instalado), mas fica disponível como
+utilitário para quem quiser configurar o ambiente local manualmente.
 
 ------------------------------------------------------------------------
 

@@ -34,6 +34,13 @@ run_in_container() {
 }
 
 echo
+echo "🧪 Executando php-cs-fixer (composer cs-fixer) em \"$CONTAINER_NAME\"..."
+if ! run_in_container "composer cs-fixer"; then
+  echo "❌ 'composer cs-fixer' falhou. Commit cancelado."
+  exit 1
+fi
+
+echo
 echo "🧪 Executando testes (composer test) em \"$CONTAINER_NAME\"..."
 if ! run_in_container "composer test"; then
   echo "❌ 'composer test' falhou. Commit cancelado."

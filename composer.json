@@ -20,7 +20,9 @@
     "test": "phpunit tests",
     "stan": "phpstan analyse src/ --level=10 --error-format=table",
     "check-all": "phpstan analyse src/ --level=10 && phpunit tests",
-    "coverage": "XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-html coverage"
+    "coverage": "XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-html .phpunit-cache/coverage-report",
+    "cs-fixer": "./vendor/bin/php-cs-fixer fix ./src && echo '\n' && ./vendor/bin/php-cs-fixer fix ./tests && echo '\n'",
+    "pre-commit": "composer coverage && cs-fixer"
   },
   "config": {
     "optimize-autoloader": true
@@ -31,10 +33,11 @@
     "phpunit/phpunit": "^12.4",
     "mockery/mockery": "^1.6",
     "fakerphp/faker": "^1.24",
-    "squizlabs/php_codesniffer": "^4.0",
-    "phpstan/phpstan": "^2.1"
+    "phpstan/phpstan": "^2.1",
+    "friendsofphp/php-cs-fixer": "^3.90"
   },
   "require": {
+    "php": "^8.4",
     "symfony/var-dumper": "^7.3",
     "guzzlehttp/guzzle": "^7.10"
   }
