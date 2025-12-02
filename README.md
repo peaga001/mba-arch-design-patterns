@@ -1,143 +1,65 @@
-# 📘 PHP Basic Setup
+# 📚 Estudos de Design Patterns em PHP
 
-Este projeto é um ambiente mínimo e moderno para desenvolvimento em PHP,
-totalmente isolado em Docker, contendo:
+Este repositório reúne estudos práticos e aprofundados sobre **Design
+Patterns aplicados em PHP**, com foco em arquitetura limpa, boas
+práticas e organização modular.\
+Aqui você encontrará exemplos reais, estruturados e comentados de
+diferentes padrões utilizados em aplicações modernas.
 
--   PHP 8.4 (Alpine)
--   Composer
--   PHPUnit
--   PHPStan
--   Xdebug
--   Node + npm
--   Servidor embutido do PHP (`php -S`)
--   Autoload PSR-4 com `src/`
+O objetivo do projeto é servir como um **laboratório de aprendizado**,
+concentrando:
 
-Ideal para estudos, pequenos projetos ou como template inicial.
-
-------------------------------------------------------------------------
-
-## 🚀 Como executar
-
-### 1. Suba o container
-
-``` sh
-docker compose up --build -d
-```
-
-A aplicação ficará disponível em:
-
-    http://localhost:8000
+-   Implementações individuais de cada pattern\
+-   Exemplos práticos em código\
+-   Comparação entre padrões semelhantes\
+-   Demonstração de como se comportam em cenários reais\
+-   Documentação clara e orientada para estudo
 
 ------------------------------------------------------------------------
 
-## 🐳 Docker
+## 🧩 Design Patterns Implementados
 
-O ambiente roda com:
+### **1. DTO (Data Transfer Object)**
 
--   Porta exposta: **8000**
--   Montagem do diretório do projeto em `/app`
--   Instalação automática das dependências via `composer install`
--   Servidor embutido do PHP apontando para `public/`
-
-------------------------------------------------------------------------
-
-## 📂 Estrutura do projeto
-
-    .
-    ├── public/
-    │   └── index.php
-    ├── src/
-    │   └── ...
-    ├── tests/
-    │   └── ...
-    ├── docker/
-    │   └── php/
-    │       └── xdebug.ini
-    ├── .husky/
-    │   └── install-from-apt.sh
-    └── composer.json
+Objetos simples utilizados exclusivamente para **transporte de dados
+entre camadas** da aplicação.\
+Não possuem lógica de domínio, apenas propriedades tipadas e,
+opcionalmente, métodos auxiliares de leitura.
 
 ------------------------------------------------------------------------
 
-## 🧪 Scripts disponíveis
+### **2. Repository**
 
-### Rodar testes
-
-``` sh
-docker exec app composer test
-```
-
-### Rodar PHPStan
-
-``` sh
-docker exec app composer stan
-```
-
-### Rodar análise + testes
-
-``` sh
-docker exec app composer check-all
-```
-
-### Gerar cobertura de testes
-
-``` sh
-docker exec app composer coverage
-```
-
-A cobertura será gerada em `coverage/`.
-
-### Rodar Pré Commit Manualmente
-
-``` sh
-docker exec app composer pre-commit
-```
-CsFixer + PhpUnit + PhpStan 
+Encapsula a lógica de **persistência de aggregates** (entities + value
+objects relacionados), isolando a camada de domínio dos detalhes de
+armazenamento.\
+Permite trocar o mecanismo de persistência (DB, API, cache, etc.) sem
+afetar o restante da aplicação.
 
 ------------------------------------------------------------------------
 
-## 🐞 Debug com Xdebug
+### **3. Adapter**
 
-Variáveis já configuradas:
-
-    XDEBUG_MODE=debug
-    XDEBUG_SESSION=1
-
-Ajustes adicionais podem ser feitos em:
-
-    docker/php/xdebug.ini
+Fornece uma interface que o cliente espera, permitindo que **classes
+incompatíveis trabalhem juntas**.\
+Resolve problemas de integração entre contratos diferentes sem alterar o
+código original.
 
 ------------------------------------------------------------------------
 
-## ⚙️ Instalação opcional do NVM (Debian/Ubuntu)
+### **4. Strategy**
 
-O repositório inclui o script:
-
-    .husky/install-from-apt.sh
-
-Esse arquivo é útil quando o projeto precisa ser configurado em um
-ambiente **fora do Docker**, usando uma base **Debian/Ubuntu** (APT).
-
-O script faz:
-
--   Instalação do `curl` (se necessário)
--   Download do instalador oficial do NVM
--   Carregamento automático do NVM no shell
--   Possibilidade de instalar uma versão específica do Node.js
-
-Exemplo de uso:
-
-``` sh
-chmod +x .husky/install-from-apt.sh
-./.husky/install-from-apt.sh
-```
-
-Este script **não é executado automaticamente** dentro do container (que
-já usa Alpine e já possui Node instalado), mas fica disponível como
-utilitário para quem quiser configurar o ambiente local manualmente.
+Define uma **família de algoritmos intercambiáveis**, permitindo variar
+comportamentos em tempo de execução.\
+Favorece extensibilidade e elimina condicionais complexas.
 
 ------------------------------------------------------------------------
 
-## 👤 Autor
+### **5. Presenter**
 
-**Pedro Barros**
+Responsável por **formatar e estruturar dados** para que fiquem
+adequados ao consumo pelo cliente (API, frontend, terceiros, etc.).\
+Muito útil para manter a camada de domínio livre de preocupações de
+apresentação.
+
+------------------------------------------------------------------------

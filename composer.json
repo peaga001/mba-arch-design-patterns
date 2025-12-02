@@ -8,7 +8,8 @@
       "src/"
     ],
     "psr-4": {
-      "App\\": "src/"
+      "App\\": "src/",
+      "Tests\\": "tests/"
     }
   },
   "authors": [
@@ -22,7 +23,7 @@
     "check-all": "phpstan analyse src/ --level=10 && phpunit tests",
     "coverage": "XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-html .phpunit-cache/coverage-report",
     "cs-fixer": "./vendor/bin/php-cs-fixer fix ./src && echo '\n' && ./vendor/bin/php-cs-fixer fix ./tests && echo '\n'",
-    "pre-commit": "composer coverage && cs-fixer"
+    "pre-commit": "composer coverage && composer cs-fixer"
   },
   "config": {
     "optimize-autoloader": true
@@ -39,6 +40,7 @@
   "require": {
     "php": "^8.4",
     "symfony/var-dumper": "^7.3",
-    "guzzlehttp/guzzle": "^7.10"
+    "guzzlehttp/guzzle": "^7.10",
+    "nesbot/carbon": "^3.10"
   }
 }

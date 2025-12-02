@@ -1,7 +1,7 @@
 services:
-  app:
+  mba-arch-design-patterns:
     build: .
-    container_name: app
+    container_name: mba-arch-design-patterns
     volumes:
       - ./:/app
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini

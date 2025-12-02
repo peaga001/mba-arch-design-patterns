@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Core\Application\DTO;
+
+use App\Core\Domain\Enums\PaymentType;
+
+class GenerateInvoicesInputDTO
+{
+    public function __construct(
+        public int $month,
+        public int $year,
+        public PaymentType $paymentType,
+    ) {
+    }
+
+    public static function makeFromArray(array $data): self
+    {
+        return new self(
+            month: (int) $data['month'],
+            year: (int) $data['year'],
+            paymentType: PaymentType::from($data['payment_type']),
+        );
+    }
+}
