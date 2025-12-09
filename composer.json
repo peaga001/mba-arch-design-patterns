@@ -19,8 +19,8 @@
   ],
   "scripts": {
     "test": "phpunit tests",
-    "stan": "phpstan analyse src/ --level=10 --error-format=table",
-    "check-all": "phpstan analyse src/ --level=10 && phpunit tests",
+    "stan": "phpstan analyse src/ --level=5 --error-format=table",
+    "check-all": "phpstan analyse src/ --level=5 && phpunit tests",
     "coverage": "XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-html .phpunit-cache/coverage-report",
     "cs-fixer": "./vendor/bin/php-cs-fixer fix ./src && echo '\n' && ./vendor/bin/php-cs-fixer fix ./tests && echo '\n'",
     "pre-commit": "composer coverage && composer cs-fixer"

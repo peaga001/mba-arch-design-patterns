@@ -29,7 +29,7 @@ final readonly class PaymentsRepository implements IPaymentsRepository
         $contractPaymentsData = array_filter(
             array: $paymentsData,
             callback: fn ($paymentData) => $paymentData['id_contract'] === $contractId
-        ) ?? [];
+        );
 
         foreach ($contractPaymentsData as $contractPaymentData) {
             $payments[] = new Payment(

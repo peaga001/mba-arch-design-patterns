@@ -19,7 +19,7 @@ if [ -z "$FILES_LIST" ]; then
   exit 0
 fi
 
-CONTAINER_NAME="app"
+CONTAINER_NAME="mba-app"
 
 echo "🔍 Executando hooks de pre-commit..."
 
