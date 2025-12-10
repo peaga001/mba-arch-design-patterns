@@ -18,10 +18,6 @@ class CsvInvoicesPresenter implements IGenerateInvoicesPresenter
 
         $array = $this->outputToArray($output);
 
-        if ($array === []) {
-            return '';
-        }
-
         $keys      = array_keys($array[0]);
         $content[] = implode(",", $keys);
 
