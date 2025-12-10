@@ -80,3 +80,10 @@ Responsável por intermediar a comunicação entre camadas, atuando como um driv
 - Retorna a resposta apropriada ao cliente (driver)
 
 ------------------------------------------------------------------------
+
+### **7. Mediator**
+
+Centraliza a comunicação entre objetos, reduzindo o acoplamento direto entre eles.
+Em vez de um objeto conhecer e chamar diretamente vários outros, ele interage apenas com um mediador, que coordena quem deve ser notificado e como reagir.
+
+------------------------------------------------------------------------

@@ -6,14 +6,15 @@ namespace App\Application\UseCases;
 
 use App\Application\DTO\GenerateInvoicesInputDTO;
 use App\Application\DTO\GenerateInvoicesOutputDTO;
+use App\Application\Mediators\UseCasesMediator;
 use App\Domain\Ports\IContractsRepository;
 
 readonly class GenerateInvoicesUseCase
 {
     public function __construct(
-        private IContractsRepository $contractsRepository
-    ) {
-    }
+        private IContractsRepository $contractsRepository,
+        private UseCasesMediator $mediator = new UseCasesMediator()
+    ) {}
 
     /**
      * @param GenerateInvoicesInputDTO $input
@@ -30,6 +31,12 @@ readonly class GenerateInvoicesUseCase
                 $output[] = GenerateInvoicesOutputDTO::makeFromInvoice($invoice);
             }
         }
+
+        $this->mediator->publish('InvoicesGenerated', [
+            'email'   => $input->email,
+            'subject' => 'Invoices',
+            'message' => 'Invoices have been generated!'
+        ]);
 
         return $output;
     }
