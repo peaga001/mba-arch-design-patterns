@@ -12,6 +12,7 @@ class GenerateInvoicesInputDTO
         public int $month,
         public int $year,
         public PaymentType $paymentType,
+        public ?string $userAgent = null
     ) {
     }
 
@@ -21,6 +22,7 @@ class GenerateInvoicesInputDTO
             month: (int) $data['month'],
             year: (int) $data['year'],
             paymentType: PaymentType::from($data['payment_type']),
+            userAgent: $data['user_agent'] ?? null
         );
     }
 }

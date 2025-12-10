@@ -6,10 +6,11 @@ namespace App\Core\Application\Managers;
 
 use App\Core\Application\DTO\GenerateInvoicesInputDTO;
 use App\Core\Application\Ports\IGenerateInvoicesPresenter;
+use App\Core\Application\Ports\IInvoicesManager;
 use App\Core\Application\UseCases\GenerateInvoicesUseCase;
 use App\Core\Domain\Ports\IContractsRepository;
 
-readonly class InvoicesManager
+readonly class InvoicesManager implements IInvoicesManager
 {
     private GenerateInvoicesUseCase $generateInvoicesUseCase;
 

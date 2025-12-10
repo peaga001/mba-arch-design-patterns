@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Core\Application\UseCases;
+namespace Tests\Core\Application\UseCases;
 
 use App\Core\Application\DTO\GenerateInvoicesInputDTO;
 use App\Core\Application\UseCases\GenerateInvoicesUseCase;

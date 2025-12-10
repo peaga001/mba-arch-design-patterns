@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Core\Application\Managers;
+namespace Tests\Core\Application\Managers;
 
 use App\Consumers\Presenters\CsvInvoicesPresenter;
 use App\Consumers\Presenters\JsonInvoicesPresenter;

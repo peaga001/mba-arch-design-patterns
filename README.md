@@ -63,3 +63,10 @@ Muito útil para manter a camada de domínio livre de preocupações de
 apresentação.
 
 ------------------------------------------------------------------------
+
+### **6. Decorator**
+
+O padrão Decorator permite estender o comportamento de um objeto dinamicamente, sem alterar sua estrutura original.
+Ele envolve o objeto real com um wrapper que adiciona novas responsabilidades, mantendo a mesma interface.
+
+------------------------------------------------------------------------

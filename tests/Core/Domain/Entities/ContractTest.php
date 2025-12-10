@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Core\Domain\Entities;
+namespace Tests\Core\Domain\Entities;
 
 use App\Core\Domain\Entities\Contract;
 use App\Core\Domain\Enums\PaymentType;
