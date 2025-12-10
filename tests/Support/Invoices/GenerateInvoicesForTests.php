@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Support\Invoices;
 
-use App\Adapters\DB\DBConnections\InMemory\InMemoryConnection;
-use App\Adapters\DB\Repositories\ContractsRepository;
-use App\Adapters\DB\Repositories\PaymentsRepository;
-use App\Core\Domain\Entities\Contract;
-use App\Core\Domain\Entities\Payment;
-use App\Core\Domain\Ports\IContractsRepository;
+use App\Infra\DB\DBConnections\InMemory\InMemoryConnection;
+use App\Infra\DB\Repositories\ContractsRepository;
+use App\Infra\DB\Repositories\PaymentsRepository;
+use App\Domain\Entities\Contract;
+use App\Domain\Entities\Payment;
+use App\Domain\Ports\IContractsRepository;
 use Carbon\Carbon;
 
 trait GenerateInvoicesForTests

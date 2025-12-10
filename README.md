@@ -70,3 +70,13 @@ O padrão Decorator permite estender o comportamento de um objeto dinamicamente,
 Ele envolve o objeto real com um wrapper que adiciona novas responsabilidades, mantendo a mesma interface.
 
 ------------------------------------------------------------------------
+
+### **7. Controller**
+
+Responsável por intermediar a comunicação entre camadas, atuando como um driver que:
+- Recebe dados de entrada (HTTP, CLI, fila, evento etc.)
+- Converte esses dados para um formato adequado ao caso de uso 
+- Invoca a lógica de aplicação ou domínio 
+- Retorna a resposta apropriada ao cliente (driver)
+
+------------------------------------------------------------------------
