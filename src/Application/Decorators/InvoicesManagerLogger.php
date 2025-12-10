@@ -18,7 +18,6 @@ readonly class InvoicesManagerLogger implements IInvoicesManager
     ) {
     }
 
-
     public function generateInvoices(
         IGenerateInvoicesPresenter $invoicesPresenter,
         GenerateInvoicesInputDTO $input
