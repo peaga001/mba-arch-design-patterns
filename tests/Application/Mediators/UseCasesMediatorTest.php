@@ -31,7 +31,7 @@ class UseCasesMediatorTest extends BaseTestCases
         $mediator = new UseCasesMediator();
         $mediator->addEventListener(
             'InvoicesGenerated',
-            fn($payload) => $sendEmailUseCase->sendEmail($payload['email'], $payload['subject'], $payload['message'])
+            fn ($payload) => $sendEmailUseCase->sendEmail($payload['email'], $payload['subject'], $payload['message'])
         );
 
         $generateInvoicesUseCase = new GenerateInvoicesUseCase(
@@ -63,7 +63,7 @@ class UseCasesMediatorTest extends BaseTestCases
         $mediator = new UseCasesMediator();
         $mediator->addEventListener(
             'InvoicesExcluded',
-            fn($payload) => $sendEmailUseCase->sendEmail($payload['email'], $payload['subject'], $payload['message'])
+            fn ($payload) => $sendEmailUseCase->sendEmail($payload['email'], $payload['subject'], $payload['message'])
         );
 
         $generateInvoicesUseCase = new GenerateInvoicesUseCase(

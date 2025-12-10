@@ -14,7 +14,8 @@ readonly class GenerateInvoicesUseCase
     public function __construct(
         private IContractsRepository $contractsRepository,
         private UseCasesMediator $mediator = new UseCasesMediator()
-    ) {}
+    ) {
+    }
 
     /**
      * @param GenerateInvoicesInputDTO $input

@@ -8,7 +8,8 @@ readonly class SendEmailUseCase
 {
     public function __construct(
         private IMailer $mailer
-    ){}
+    ) {
+    }
 
     public function sendEmail(string $email, string $subject, string $message): void
     {

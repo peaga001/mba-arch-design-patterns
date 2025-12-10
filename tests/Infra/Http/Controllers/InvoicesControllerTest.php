@@ -80,6 +80,7 @@ class InvoicesControllerTest extends BaseTestCases
         $this->assertSame(200, $response->getStatusCode());
         $this->assertStringContainsString('2022-01-05', $contents);
         $this->assertStringContainsString('6000', $contents);
+        $this->assertCount(1, $logger->getOutput());
         $this->assertEquals('{"UserAgent":"Chrome-Test"}', $logger->getMessage(0));
     }
 }

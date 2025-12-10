@@ -11,7 +11,8 @@ class UseCasesMediator
      */
     public function __construct(
         private array $listeners = []
-    ){}
+    ) {
+    }
 
     public function addEventListener(string $event, callable $callback): void
     {
@@ -21,7 +22,7 @@ class UseCasesMediator
     public function publish(string $event, mixed $payload): void
     {
         foreach ($this->listeners as $listener) {
-            if($listener->isEvent($event)) {
+            if ($listener->isEvent($event)) {
                 $listener->callback($payload);
             }
         }

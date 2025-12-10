@@ -8,7 +8,8 @@ class InMemoryMailer implements IMailer
 {
     public function __construct(
         private array $mails = []
-    ){}
+    ) {
+    }
 
     public function sendEmail(string $email, string $subject, string $message): void
     {
